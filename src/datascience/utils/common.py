@@ -3,7 +3,8 @@ import yaml
 from src.datascience import logger
 import json
 import joblib
-from ensurepip import ensure_annotations
+# from __future__ import annotations
+from ensure import ensure_annotations
 from box import ConfigBox
 from typing import Any
 from pathlib import Path
