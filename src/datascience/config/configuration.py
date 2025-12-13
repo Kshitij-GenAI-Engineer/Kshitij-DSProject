@@ -1,7 +1,7 @@
 from src.datascience.constants import *
 from src.datascience.utils.common import read_yaml, create_directories
 from src.datascience.entity.config_entity import (DataIngestionConfig,DataValidationConfig,
-                                                  DataTransformationConfig)
+                                                  DataTransformationConfig, ModelTrainerConfig)
 
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
@@ -56,3 +56,15 @@ class ConfigurationManager:
             data_path=Path(config.data_path)
         )
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=Path(config.root_dir),
+            trained_model_path=Path(config.trained_model_path),
+            base_accuracy=config.base_accuracy
+        )
+        return model_trainer_config
+        

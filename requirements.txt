@@ -13,3 +13,4 @@ joblib
 types-PyYAML
 Flask
 Flask-Cors
+ensure-annotations
